@@ -1,2 +1,2 @@
-to test
-echo 
+echo "hello world"
+echo " hello microdegree"
