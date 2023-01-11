@@ -4,9 +4,9 @@ pipeline{
             stage('Build-System details'){
                 steps{
 		    sh '''
-                    echo '"SYSTEM DETAILS"'
-                    uname -a
-		    '''
+                    echo '"ip adress"'
+		    hostname -I 
+		      '''
                 }
             }
             stage('Build-Memory details'){
