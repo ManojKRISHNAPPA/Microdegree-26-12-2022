@@ -1,9 +1,49 @@
-pipeline {
-	agent any 
-		stages{
-			steps{
-				sh "echo build is succuess"
-		}
+pipeline{
+    agent {
+		label 'Node1'
 	}
+        stages{
+            stage('Build-System details'){
+                steps{
+		    sh '''
+                    echo '"SYSTEM DETAILS"'
+                    uname -a
+		    '''
+                }
+            }
+            stage('Build-Memory details'){
+                steps{
+		    sh '''
+                    echo "MEMORY DETAILS"
+                    free
+		    '''
+                }
+            }
+            stage('Build-CPU details'){
+                steps{
+		    sh '''
+                    echo "CPU DETAILS"
+                    lscpu
+		    '''
+                }
+            }
+            stage('Build-Disk details'){
+                steps{
+		    sh '''
+                    echo "TODAYS DATE"
+                    date
+		    '''
+                }
+            }
+		 stage('Build-Process command'){
+                steps{
+                    sh '''
+                    echo "Process command"
+                    ps -ef
+                    '''
+                }
+            }
+
+        }
 }
  
