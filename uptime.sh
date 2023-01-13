@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-echo "Welcome to Jenkins, By Deepak"
+echo "Welcome to Jenkins, By Deepak Test"
 echo
 a=`uptime`
 
