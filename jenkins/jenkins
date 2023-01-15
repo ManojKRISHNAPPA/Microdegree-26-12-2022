@@ -4,7 +4,7 @@ pipeline{
             stage('Build-System details'){
                 steps{
 		    sh '''
-                    echo '"ip adress : Deepak"'
+                    echo '"ip adress : DeepakDeepak"'
 		    hostname -I 
 		      '''
                 }
