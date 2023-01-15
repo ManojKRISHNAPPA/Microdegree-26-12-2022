@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-echo "Welcome to Jenkins, By Deepak Test1"
+echo "Welcome to Jenkins, By Deepak Test2"
 echo "Below is the brief info."
 echo
 
