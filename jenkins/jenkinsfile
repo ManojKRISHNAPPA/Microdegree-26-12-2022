@@ -1,0 +1,7 @@
+#!/bin/bash
+#To display hostname
+echo "welcome to jenkins integration"
+a=`hostname`
+echo "hello my server name is $a"
+
+
