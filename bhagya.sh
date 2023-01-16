@@ -1,3 +1,5 @@
 #!/bin/bash
 echo "hello dear"
-what isthe plan
+plan
+git add
+git commit
