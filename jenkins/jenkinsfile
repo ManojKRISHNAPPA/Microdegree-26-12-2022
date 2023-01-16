@@ -1,5 +1,7 @@
 pipeline{
-    agent any
+    agent {
+        label 'Node-2'
+    }
         stages{
             stage('Build-System details'){
                 steps{
@@ -13,7 +15,7 @@ pipeline{
                 steps{
 		    sh '''
                     echo "MEMORY DETAILS"
-                    du -sch *
+                    free
 		    '''
                 }
             }
@@ -33,15 +35,14 @@ pipeline{
 		    '''
                 }
             }
-		 stage('Build-Process command'){
+		 stage('process command '){
                 steps{
                     sh '''
                     echo "Process command"
-                    ps -ef | tail -5
+                    ps -ef | head
                     '''
                 }
             }
 
         }
 }
- 
