@@ -1,3 +1,4 @@
+#!/bin/bash
 hello world
-what is the plan
+echo "what is the plan"
 when we will meet
