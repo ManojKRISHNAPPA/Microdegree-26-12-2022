@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "welcome to jenkins integration"
+echo "welocome to jenkins integartion"
 echo
-a=`host name`
-echo "hello, mysever name is $a"
+a=`hostmane`
+echo "hello, myservername is $a"
