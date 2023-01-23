@@ -1,0 +1,2 @@
+echo "rangh"
+echo "manga"
