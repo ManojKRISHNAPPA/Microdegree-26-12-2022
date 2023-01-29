@@ -2,14 +2,20 @@ minikube requirements:
 ```sh
 t2.medium
 ```
+```sh
 ubuntu
+```
 
 Pre-requisits:
-
+```sh
 docker is must: https://docs.docker.com/engine/install/ubuntu/
-
+```
+```sh
 sudo apt-get update -y
+```
+```sh
 sudo apt-get install curl apt-transport-https wget
+```
 sudo apt-get install virtualbox virtualbox-ext-pack
 beacuse minikube designed to run on local systems
 sudo apt-get install conntrack
