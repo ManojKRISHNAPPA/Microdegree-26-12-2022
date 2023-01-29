@@ -1,5 +1,5 @@
 minikube requirements:
-sh```
+```sh
 t2.medium
 ```
 ubuntu
