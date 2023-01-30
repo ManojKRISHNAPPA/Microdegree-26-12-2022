@@ -32,40 +32,47 @@ cp minikube-linux-amd64 /usr/local/bin/minikube
 ```sh
 chmod 755 /usr/local/bin/minikube
 ```
-``sh 
+```sh 
 mini
 ```
+
 ```sh
 minikube version
 ```
 
 Now:-install kubectl in ubuntu
+
 ```sh
 https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 ```
 from :-Install using native package management use commands
 
 1)Update the apt package index and install packages needed to use the Kubernetes apt repository:
+
 ```sh
 	sudo apt-get update
 	sudo apt-get install -y ca-certificates curl	
 ```
 
 2)If you use Debian 9 (stretch) or earlier you would also need to install apt-transport-https:
+
 ```sh	
 	sudo apt-get install -y apt-transport-https
 ```
 
 3)Download the Google Cloud public signing key:
+
 ```sh
 	sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 ```
+
 4)Add the Kubernetes apt repository:
 ```sh
 	echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 ```
 
 5)Update apt package index with the new repository and install kubectl:
+
 ```sh
 	sudo apt-get update
 ```
@@ -92,27 +99,35 @@ from :-Install using native package management use commands
 ```sh
  	sudo usermod -aG docker $USER && newgrp docker
 ```
-10) ```sh 
+10) 
+```sh 
 	minikube start --driver=docker
 ```
-11) ```sh 
+11) 
+```sh 
 	kubectl get node
 ````
-12) ```sh 
-	minikube status
+12)
+
+```sh 
+minikube status
 ```
 13) *minikube stop (Not Required)
 
-14)```sh
-
+14)
+```sh
 	kubectl cluster-info
 ```
-15)```sh
+15)
+```sh
 	minikube ip
 ```
-16)```sh
+16)
+
+```sh
 	minikube ssh
 ```
-17)```sh 
+17)
+```sh 
 	docker ps
 ```
