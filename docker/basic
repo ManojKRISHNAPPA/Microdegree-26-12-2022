@@ -1,0 +1,23 @@
+For linux
+yum install docker
+systemctl enable docker
+systemctl start docker
+docker version 
+docker images
+docker container ls
+docker ps
+docker ps -a
+docker build -t image id
+docker run -it --name conatainer name -p port:port image id bash
+docker pull
+docker push
+docker attach it
+docker exec -it
+docker start container
+docker stop container 
+docker rm
+dcoker rmi ==>for images
+docker system prune -a ===> delete all
+docker image tag imagename:version dockerhubrepo/image name
+docker login
+docker push
