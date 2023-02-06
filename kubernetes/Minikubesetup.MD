@@ -7,8 +7,9 @@ ubuntu
 ```
 
 Pre-requisits:
+docker is must:
 ```sh
-docker is must: https://docs.docker.com/engine/install/ubuntu/
+https://docs.docker.com/engine/install/ubuntu/
 ```
 ```sh
 sudo apt-get update -y
