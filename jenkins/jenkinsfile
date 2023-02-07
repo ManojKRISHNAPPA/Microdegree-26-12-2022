@@ -30,7 +30,7 @@ pipeline{
             stage('Todays date'){
                 steps{
 		    sh '''
-                    echo "TODAY DATE"
+                    echo "TODAYs DATE"
                     date
 		    '''
                 }
