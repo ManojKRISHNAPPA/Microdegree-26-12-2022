@@ -7,3 +7,4 @@ git push
 
 
 git pull
+echo "pin"
