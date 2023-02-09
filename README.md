@@ -8,5 +8,7 @@ git push
 
 git pull
 echo
-echo "new"
-echo "pin"
+echo "new""
+=======
+echo 'plus"
+>>>>>>> f564c17f28574f52e72bf55fcb0cc291e2eb86ac
