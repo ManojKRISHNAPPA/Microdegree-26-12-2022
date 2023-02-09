@@ -9,3 +9,4 @@ git push
 git pull
 echo
 echo "new"
+echo "pin"
