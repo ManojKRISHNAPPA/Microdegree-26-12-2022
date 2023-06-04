@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+echo "Welcome to jenkins intergration"
+
+
+a=`hostname`
+b=`uptime`
+c=`pwd`
+echo "hellow, myserver name is $a"
+
+
+echo "my server details is $b"
+
+
+
+
+echo "my present working directory is $c"
+
+
