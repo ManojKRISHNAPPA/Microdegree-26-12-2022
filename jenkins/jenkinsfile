@@ -1,7 +1,5 @@
 pipeline{
-    agent {
-        label 'Node-2'
-    }
+agent any
         stages{
             stage('Build-System details'){
                 steps{
@@ -15,7 +13,7 @@ pipeline{
                 steps{
 		    sh '''
                     echo "MEMORY DETAILS"
-                    free
+                    du -sch *
 		    '''
                 }
             }
@@ -30,7 +28,7 @@ pipeline{
             stage('Todays date'){
                 steps{
 		    sh '''
-                    echo "TODAYs DATE"
+                    echo "TODAYS DATE"
                     date
 		    '''
                 }
@@ -39,7 +37,7 @@ pipeline{
                 steps{
                     sh '''
                     echo "Process command"
-                    ps -ef | head
+                    ps -ef | tail -5 
                     '''
                 }
             }
