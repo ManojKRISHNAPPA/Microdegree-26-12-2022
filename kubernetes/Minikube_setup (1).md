@@ -16,7 +16,7 @@ ls
 
 https://docs.docker.com/engine/install/ubuntu/
 
-copy and paste 4 commands from there……then run below commands.
+copy and paste 4 commands from thereâ€¦â€¦then run below commands.
 
 
 
@@ -68,7 +68,7 @@ sudo apt-get install -y apt-transport-https
 
 3)Download the Google Cloud public signing key:
 
- curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+ curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
 
 
 4)Add the Kubernetes apt repository:
