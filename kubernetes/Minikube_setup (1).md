@@ -51,7 +51,7 @@ Go to :
 
 https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 
-from :-Install using native package management use commands
+from :-Install using native package management use commands  (USE COMMANDS FROM THE BELOW LINK ONLY ....DONLY COPY PASTE FROM GIT HUB THIS DOCS  TILL INSTALLING KUBECTL )
 
 1)Update the apt package index and install packages needed to use the Kubernetes apt repository:
 
