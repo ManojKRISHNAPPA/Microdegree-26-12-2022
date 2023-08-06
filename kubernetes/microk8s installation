@@ -94,8 +94,17 @@ here you can see...d1     NodePort   10.152.183.157   <none>        80:30256/TCP
 
 Then hit pub ip of your ubuntu : port  number 30256  ===you can see nginx default page..
 
+To do this you shoud ope 30000-40000 ports for your ubuntu ec2..then only ot works.
 
 
+If you want to expose other image:
 
+vi deployment.yaml
+
+intaht below edit image : prashantbokke/bokke  
+save it
+k apply -f deployment.yaml -n bhavya
+k get pods -n bhavya
+now go url and refresh the previous page you can see another application (created by prashant)
 
 
