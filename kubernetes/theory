@@ -38,3 +38,25 @@ devops engiineer 2's application is updated.
 That means they all deployed under same name spaces...and all names overwrite
 So in real time multiple people will working on a same project...to avoid all these namespace is  created.
 in same name space we cant use same metadata...in different name space we can use same metadata.....
+
+kubectl get ns
+
+kube- default (our  kubernetes cluster will set in default namespace...If you do any deployment without specifieng name 
+space that is go and deployed on this default namespace...This is the name space where kubernetes provide for  you to start 
+deploying your k8s objects or resources here in default name spaces.
+
+kube node-lease --This is going to tell you that wether your node is up and running or not. if not it will send a signal to controller manager.
+kube-public --- This is publically accesible...Our client can access the kubernetes cluster throgh this namespace
+kube-system -----Here Kubernetes services which is related to this perticular k8s cluster can run here (i.e kube etcd kube shedular cm,cube proxy 
+such perticular pods are running here..because those are system level service. 
+That is been reserverd for the system level services to be running
+
+In future dont touch other name spaces except default....or your own custom name spaces.....
+
+In minikube:
+
+kubectl create ns bhavya
+kubectl get ns
+So in our name space we will create kubernetes objects.
+
+
