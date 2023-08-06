@@ -180,4 +180,17 @@ To see complete pod information:
 
 kubectl describe pod podname
 
+if i want to delete object itself
+kubectl delete -f deployment.yaml   
+  
+or
+
+kubectl delete deployment vins  ======(vins is the deployment name)
+
+
+kubectl get pods
+
+
+deleted
+
 
