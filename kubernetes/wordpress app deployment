@@ -1,0 +1,140 @@
+wordpress application:
+
+Prerequisites: ubuntu  ----  t2 medium  -----vol 30 GB
+Go to https://microk8s.io/#install-microk8s
+Copy and paste below coomand
+sudo snap install microk8s --classic
+sudo su
+cd /
+ls
+cd opt
+ls
+git clone -b manoj here copy and paste manoj 8pm git repos http code and press enter
+ls
+cd 8pmmicrodegreemanoj
+ls
+cd kubernetes
+ls
+cp wordpress.tar.gz /opt/
+cd /opt/
+ls
+tar -xvzf wordpress.tar.gz
+ls
+here you can see list of all files inside wordpres folder
+mkdir wordpress (this should be inside opt )
+mv *.yaml /opt/wordpress/
+ls
+you can see here 4 folders...i.e wordpress wordpress.tar.gz microdegreee-8.pm  containers
+cd wordpress
+ls
+i.e   dnsutilities.yaml wordpress.yaml   mysql_deployment.yaml  pv_yaml pv_wordpress yaml
+mv pv_yaml pv_mysql.yaml
+ls
+vi pv_mysql.yaml (jusy to check what is tere inside file)
+cd /mnt/
+ls
+nothing here now.
+cd ..
+cd /opt/wordpress/
+ls
+microk8s status
+ its running
+microk8s kubectl get pods  =======> no pods here
+microk8s kubectl get namespace =======> only 4 are there.....
+
+alias k='microk8s kubrctl'
+k get pods
+no resources.....
+k get svc
+also check if there is any volumes.....i.e
+k get pv
+k get pvc
+no volems.......
+k apply -f pv_mysql.yaml
+=====> pv and pvc created.......
+k grt pvc 
+=======? you can see volume is created.
+k get pv
+=======? you can see volume is created.
+k apply -f mysql_deployment.yaml
+service created.....
+deployment created.......
+k get pods
+ls /mnt/
+ls
+data is created........
+cd data
+ls
+mysql  performance_sceme generated.......
+open port 3306 in your ec2 sec group to access myseql
+vi mysql_deployment.yaml   (just check the file once)
+exit
+k get pods
+to enter into pod
+k exec -it padname -- bash
+now im inside mysql container
+
+
+To access mysql:
+mysql -uroot -p
+enter password : password
+
+show databases ;
+if you typed anything wrong here just type exit and start from mysql -uroot -p and enter password i.e password)
+create database bhavya;
+exit (from database)
+exit (pod)
+now we are here..../opt/wordpress
+ls /mnt/data/
+bhavya database is created
+k get svc
+here you can see the ip of mysql ....copy that ip and open 
+vi wordpress.yaml
+here in this file below you can see volumes: remove the ip here and paste the ip of mysql and save it and
+exit
+k apply -f pv_wordpress.yaml
+pv created
+pvc created
+j get pv
+k get pvc
+vi pv_wordpress.yaml
+here   you can see path :/mnt/wp_data...
+Before in /opt/wordpress/mnmt/ here data folder was there
+now there shoud be new folder has to be created...i.e wp_data.....
+so go to /opt/wordpress/ 
+ls
+k get pvc  
+just confirm wp pvc is crfeated......
+but in /opt/wordpress/mnt here wp_data is not created....
+so create wp_data in mnt
+mkdir wp_data
+ls
+data wp_data
+cd wp_data
+nothing
+cd /opt/wordpress/
+ls
+k apply -f pv_wordpress.yaml
+wp pv unchanged....
+wp pvc unchanged.....
+k apply -f wordpress.yaml 
+service created.....
+deployment created......
+k get pods
+mysql running......
+wordpress container creating......so wait few sec and check again
+k get pods
+k get svc
+go to url copy and paste pubip of ec2: copy and paste wordpress container ip from above command
+wordpress app will open
+once check all the php files exist in wp_data or not i.e
+cd /mnt
+ls
+cd wp_data
+ls
+you can see here php fils....
+
+
+
+
+
