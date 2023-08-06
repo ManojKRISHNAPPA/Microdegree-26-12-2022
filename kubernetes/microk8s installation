@@ -1,0 +1,101 @@
+ubuntu
+t2 medium
+launch
+sudo snap install microk8s --classic
+sudo su
+microk8s status
+microk8s start
+microk8s status
+
+microk8s kubectl get pods
+microk8s kubectl get jobs
+microk8s kubectl get namespace
+
+alias k='microk8s kubectl' 
+k get ns
+alias
+k get pods -n kube-system
+k get pods -n kube-public
+k get pods -n kube-node-lese
+k get pos -n default
+
+lets create my namespace:
+
+k create ns bhavya
+k get ns
+
+e explain pod
+k explain namespace
+
+
+lets create deplument file:
+
+k create deployment d1 --image nginx --dry-run=client
+k create deployment d1 --image nginx --dry-run=client -o yaml
+cd /
+ls
+cd opt
+ls
+k create deployment d1 --image nginx --dry-run=client -o yaml > deployment.yaml
+k apply -f deployment.yaml -n bhavya (to deplyment)
+ls
+containerd, deployment.yaml
+cat deployment.yaml
+k get pods -n bhavya
+k logs -f imageid -n bhavya
+
+
+To delete pods:
+
+k delete pods podid -n bhavya
+(if you chek k get pods -n bhavya.......its not deleted y because of self healing policy))
+
+To delete completely
+
+k delete -f deployment.yaml -n bhavya  ( by doing like this the pod will be deleted which is 
+generated from this yaml file. here we are not going to delete the yaml file....just we delete the pod))))))
+
+k get pods -n bhavya    (noresource found)
+
+
+To create once again same:
+k apply -f deployment.yaml -n bhavya
+TO CHECK IT :
+k get pods -n bhavya
+
+To increase replicas 1 to 3:
+Vim deployment.yaml
+make replicas 3 and save it
+
+check:
+k get pods -n bhavya
+k apply -f deployment.yaml -n bhavya
+==you can see message configured
+to chek that 
+k get pods -n bhavya 
+if you delete any one pod from the three and acheck again you can see there again three are running.....
+
+k delete pods d1-695b9d7c74-b9cpd -n bhavya
+k get pods -n bhavya
+
+To check the cluster ip of pod --  
+k get svc
+
+To chk the state of our deployment --
+k get deplyment -n bhavya
+
+To expose our application deployment to outer environment---
+
+k expose deployment d1 --type NodePort --port 80 -n bhavya
+
+k get svc -n bhavya
+
+here you can see...d1     NodePort   10.152.183.157   <none>        80:30256/TCP   90s
+
+Then hit pub ip of your ubuntu : port  number 30256  ===you can see nginx default page..
+
+
+
+
+
+
