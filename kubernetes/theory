@@ -1,0 +1,40 @@
+KUBERNETES OBJECT means persistence enties which are present in kubernetes systems.
+we can create k objects through yaml file.
+Object can be anything like...node, pod, horizontal pod autosaclaler, config map,secrets, services , namespaces
+here first we create pod object...then we create service object to expose our application to the public....
+ While creating object ..In that 4 fields are important..... (file name like xxxxx.yaml) called manifest file.
+
+api version ----This tells which version of kubernetes API we are going to use to create this perticular object.
+
+kind : It says which kind of  kubernetes object you going to create ....you want to create hpa,pod,node,service etc
+
+metadata : This will specify unique name to our kubernetes object (this can be anything like name, name space, uid (string type)
+
+spec : This will tell you the desired state of the kubernetes object.....
+for ex  :if i create pod object then desired state includes docker image , port number etc
+
+Once installed minikube you can delete it...and wen you want to  use it again just type minikube start
+---
+----
+----
+---
+
+till you see the message kubectl configured......
+after that you can start using minikube
+
+kubectl get nodes
+
+namespaces: It is k8s object..which is used for a kind of mechanism for isolating the gropup of resources within a cluster.
+It is nothing but your projects....If you want to create staging , developeent environment for your oraganisation in a single 
+cluster then you can use a namespaces.
+(here one or more devops engineer will wok in single k8 cluster....developer will give the application A 's  code   to devops engineer.1 ...
+He will dockerise that application and build a docker image of that application. 
+And then he will dploy this applicatopn on a kubernetes cluster as a pod. And then he runs as a container. 
+And in menifest file , he used metadata xyz and deployed that application.
+Devops engineer.2 will do the same thing and he deploy his application in the same k8 ncluster....He also used same metadata name in his 
+menifest file....So application is updated....That means the application delerted , which is deployed from devops engineer 1 and
+devops engiineer 2's application is updated.
+#rd devops engineer also did the same thing...
+That means they all deployed under same name spaces...and all names overwrite
+So in real time multiple people will working on a same project...to avoid all these namespace is  created.
+in same name space we cant use same metadata...in different name space we can use same metadata.....
