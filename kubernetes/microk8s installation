@@ -107,4 +107,9 @@ k apply -f deployment.yaml -n bhavya
 k get pods -n bhavya
 now go url and refresh the previous page you can see another application (created by prashant)
 
+To check complete pod information:
 
+k get pods -n bhavya -o wide 
+To delet:
+
+k delete -f deployment.yaml -n bhavya
