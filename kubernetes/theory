@@ -166,5 +166,18 @@ Is that pod being deployed as a deploymrnt object or a normal pod???? if it is a
 because it doesnt have a functionality of the pod getting often and often recreated.......
 If it is getting recreated it shoud have been deployed as a kubernetes deployment object.
 Inorder to delete that pod we have to delete that deployment object itself....otherwise pods well be keeps on recreating....
-To delete that kubectl delete deployment deployment name
+To delete that kubectl delete deployment deployment name ......This much is the ans.
+
+
+Now to know deployment 
+kubctl get deployments
+====> you can see the name of the deployment.
+
+
+kubectl get pods
+
+To see complete pod information:
+
+kubectl describe pod podname
+
 
