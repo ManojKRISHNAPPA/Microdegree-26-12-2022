@@ -59,4 +59,112 @@ kubectl create ns bhavya
 kubectl get ns
 So in our name space we will create kubernetes objects.
 
+Next day topic:
+minikube start
+Pods object:
+
+Pods are nothing but containers....Containers are running applications.....
+
+kubectl get pods
+kubectl get ns
+ls
+mkdir kube
+cd kube
+ls
+vim deployment.yaml
+
+apiversion: v1
+kind: pod
+metadata:
+ name: my-app 
+spec:
+  containers:
+  - name: my-app
+    image: nginx
+    ports:
+     - containerPort: 80                      (here p is capital)
+:wq!
+
+kubectl apply -f deployment.yaml
+====pod my-app created
+kubectl get pods
+========pod is running and this pod is nothing but containers.....containers are nothing but appluication....intern pod has one application...
+So inorder to access this perticular application i need to have a perticular kubernetes services running for this perticular pod.
+then only we can expose this application to the outside world.
+
+So here in thus minikube we can not create services...because minikube has its own limitation....it is minimal in size.....
+So we can not create kubernetes service object here....this we can achive in real time k8s cluster.
+
+deployment object: This is going to create a pod...also create a replication controller...or replication sets.
+
+Here we can create replicas of same docker image....But in pod object we cant create replicas of same image....
+If we need replicas then we have to deploy our object as a deployment objects....hete vthere is provision for replicas.....
+
+we can use previous script....
+mv deployment.yaml pod.yaml
+ls
+===pod.yaml(previous deployment .yaml name changed to pod.yaml)
+now lets write deployment file for deployment object....
+
+
+vi deployment.yaml
+
+apiversion: apps/v1
+kind: Deployment
+metadata: 
+  name: vins
+  labels:
+     app: vins
+spec:
+  replicas: 2
+  selector:
+    matchLabels:     ===== llabels L should be capital
+      app: vins
+  template:
+    metadata:
+      labels:
+        app: vins
+    spec: 
+      containrs:
+      - name: vins
+        image: nginx
+        ports: 
+        - containerPort: 80       =======Port P should be capital
+
+save and exit
+kubectl apply -f deployment.yaml
+======deployment objects created
+
+kubectl get pods
+ ======== myapp  
+           vins  yyyyyyyyyyyyyyyyyyy  xxxxxxxxx   
+           vins   yyyyyyyyyyyyyyyyyy   zzzzzzzzzzz
+
+here myapp  ------> pod object
+vins   -----------> dep object
+yyyyyyyyyyyyyyyy ----------> deployment  id
+xxxxxxxx   and  zzzzzzzzzz  --------------> replica id
+vins  yyyyyyyyyyyyyyyyyyy  xxxxxxxxx   ------------ deployment object  and it is called pod name....
+
+To delete this   
+kubectl delete pod vins  yyyyyyyyyyyyyyyyyyy  xxxxxxxxx   
+======> pods deleted
+
+BUT if you check kubectl get pods=====>
+three are there......
+
+But if you delete pod object it will delete....
+kubectl delete pod myapp
+=======> it will delete
+
+
+There is senarioa where i have deployed a pod...accidentially that pod got deleted...but still i see that pod is getting created
+often and often....why is it so?
+How to delete that pod permanently?
+
+Is that pod being deployed as a deploymrnt object or a normal pod???? if it is a normal pod it should get deleted...
+because it doesnt have a functionality of the pod getting often and often recreated.......
+If it is getting recreated it shoud have been deployed as a kubernetes deployment object.
+Inorder to delete that pod we have to delete that deployment object itself....otherwise pods well be keeps on recreating....
+To delete that kubectl delete deployment deployment name
 
