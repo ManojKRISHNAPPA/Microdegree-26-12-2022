@@ -193,4 +193,60 @@ kubectl get pods
 
 deleted
 
+Till here we used to deploy public images from the docker registry...
+Now lets use private images.... using image from  https://hub.docker.com/r/vinaytr/test-evng-batch123/tags
+ Now do
+vi deployment.yaml
+in that image : vinaytr/test-evng-batch123:v1.23
+save and exit
+kubectl apply -f deployment.yaml
+========>deployment apps created....
+kubectl get pods
+=======>here you can see eror in status
+
+To check what error =====> type
+kubectl describe pod podname
+Here it is telling that since it is private image we need to configure kubernetes secres object through a command...not in yaml file...
+
+kubectl create secret docker-registry my-secret --docker-server=https://index.docker.io/v1/ --docker-username=vinaytr --docker-password= --docker-email=vinay.t59@gmail.com
+
+
+secret-my-secret is created
+vim deployment.yaml
+ just add below lines below containerPort :80
+i.e
+
+apiversion: apps/v1
+kind: Deployment
+metadata: 
+  name: vins
+  labels:
+     app: vins
+spec:
+  replicas: 2
+  selector:
+    matchLabels:     ===== llabels L should be capital
+      app: vins
+  template:
+    metadata:
+      labels:
+        app: vins
+    spec: 
+      containrs:
+      - name: vins
+        image: nginx
+        ports: 
+        - containerPort: 80 
+      imagepullsecrets:    ========= p and s should be capital
+      - name: my-secret
+
+save and exit
+
+
+kubectl get secrets
+kubectl get pods
+kubectl delete deployments vins
+
+kubectl apply -f deployment.yaml
+kubectl get pods
 
