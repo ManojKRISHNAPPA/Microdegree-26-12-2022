@@ -1,0 +1,58 @@
+Launch ubuntu 
+Go to https://prometheus.io/download/
+see the link prometheus-2.46.0.linux-amd64.tar.gz ---Right click on that link -----copy link adress
+Go to ubuntu type wget paste above link
+# Prometheus requires its own user to be running....And also tell it doesnot require any home directory----
+# It should have the shell & it shouldnot use any perticular passworxd
+sudo useradd --no-create-home --shell /bin/false prometheus
+sudo mkdir /etc/prometheus
+sudo mkdir /var/lib/prometheus
+# both directories permission is root user permission now...lets change ownership to prometheus user
+sudo chown prometheus:prometheus /etc/prometheus/
+sudo chown prometheus:prometheus /var/lib/prometheus/
+ls
+# lets extrsxt that tar file
+tar -xvf name of the prometheus tar file
+ls
+cd prometheus-2.46.0.linux-amd64
+ls
+### here folders prometheus &  promtool are important ...so we need to move this some other folder....whenver my prometheus server get started it gets started with the hep of 
+these two things. So to make it globally available we need to keep these two file in user local bin directories...
+Why because any executable packages/ or commands will run from /usr/local/bin/
+sudo mv prometheus /usr/local/bin/
+sudo mv promtool /usr/local/bin/
+### now these are in under ubuntu user permisssion...lets change permission to prometheus user
+sudo chown prometheus:prometheus /usr/local/bin/prometheus
+sudo chown prometheus:prometheus /usr/local/bin/promtool
+ls
+sudo mv console_libraries/ /etc/prometheus/
+sudo mv consoles/ /etc/prometheus/
+### change permission to prometheus user ####
+sudo chown -R prometheus:prometheus /etc/prometheus/console_libraries/
+sudo chown -R prometheus:prometheus /etc/prometheus/consoles/
+#### now 50% of the things are ready....still we can not start our prometheus server....
+To do this we need to have a pro configeration files...that is prometheus.yml
+cat prometheus.yml (by seeing this only we can write our configeration file....also we can create our own...This is the configeration of our prometheus server.)
+########  Also we must keep this pro.yml in /etc/prometheus locatin. (here it is yml)
+sudo touch /etc/prometheus/prometheus.yaml (here we create yaml)
+sudo chown prometheus:prometheus /etc/prometheus/prometheus.yaml
+
+#### now we should write the configeration for the pro server in this file ####
+sudo vi /etc/prometheus/prometheus.yaml
+
+global:
+  scrape_interval: 10s      #### it will say for how many secs prometheus should collect metrics from client exporter33333
+
+scrape_configs:
+  - job_name: 'prometheus'   ##### NAME CAN BE ANYTHING ....CAN BE OUR SERVER NAME #########
+    static_configs:
+      - targets: ['localhost:9090']   ####### we can mention pub ip or private ip in place of lical host also ##### and it says that please select port no 9090 in my local host.
+
+      Now lets stsrt the pro server.....To do this we need to write system level service configeration file....that is systemctl service file
+      We can see there are many system lever services are running in below location ...That is
+      
+      sudo cd /etc/systemd/system/
+
+      Here we need to write service file for our prometheus....
+      
+      
