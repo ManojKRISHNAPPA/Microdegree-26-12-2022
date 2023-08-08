@@ -54,5 +54,5 @@ scrape_configs:
       sudo cd /etc/systemd/system/
 
       Here we need to write service file for our prometheus....
-      
+      sudo vi /etc/systemd/system/prometheus.service
       
