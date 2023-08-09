@@ -1,10 +1,15 @@
 pipeline{
 agent any
-    stages{
-        stages('build'){
-            step{
-                sh "echo build is success"
+        stages{
+            stage('Build-System details'){
+                steps{
+		    sh '''
+                    echo '"ip adress"'
+		    hostname -I 
+		      '''
+                }
             }
         }
-    }
-}
+ }
+    
+
