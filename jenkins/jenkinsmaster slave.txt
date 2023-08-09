@@ -1,0 +1,28 @@
+https://docs.aws.amazon.com/managedservices/latest/appguide/cfn-ingest-ex-3-tier.html
+
+cat /var/lib/jenkins/secrets/initialAdminPassword
+
+https://www.jenkins.io/doc/book/installing/linux/#red-hat-centos
+
+
+
+node 1
+
+#!/bin/bash
+sudo sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config
+sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+sudo service sshd restart
+sudo echo 'root:bhavya' | chpasswd
+hostname Jenkin-Master
+
+
+
+node 2
+
+
+#!/bin/bash
+sudo sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config
+sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+sudo service sshd restart
+sudo echo 'root:bhavya' | chpasswd
+hostname Node-1
