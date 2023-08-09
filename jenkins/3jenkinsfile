@@ -1,0 +1,13 @@
+pipeline{
+agent any
+    stages{
+        stage('build system detsils'){
+            steps{
+                sh '''
+                echo "system IP adress"
+                hostname -I
+                '''
+            }       
+        }
+    }
+}
