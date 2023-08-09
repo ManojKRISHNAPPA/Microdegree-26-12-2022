@@ -1,5 +1,5 @@
 pipeline{
-    ajent any
+ajent any
     stages{
         stages ('build'){
             step{
