@@ -1,0 +1,10 @@
+pipeline{
+    ajent any
+    stages{
+        stages ('build'){
+            step{
+                sh "echo build is success"
+            }
+        }
+    }
+}
