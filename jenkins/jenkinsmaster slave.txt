@@ -7,11 +7,12 @@ https://www.jenkins.io/doc/book/installing/linux/#red-hat-centos
 
 
 Jenkins master-slave configeration:
+
 Launch ec2 without key pair and using below first script
 
 
 
-node 1
+JENKIN-MASTER
 
 #!/bin/bash
 sudo sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config
@@ -22,9 +23,9 @@ hostname Jenkin-Master
 
 Install jenkins using jenkin install url
 
+lAUNCH ONE MORE EC2 = NODE-1 ====NO KEY PAIR ====ADD BELOW USER DATA
 
-
-node 2
+NODE-1
 
 
 #!/bin/bash
@@ -32,4 +33,63 @@ sudo sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config
 sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 sudo service sshd restart
 sudo echo 'root:bhavya' | chpasswd
-hostname jenkins-slave
+hostname NODE-1
+
+lAUNCH ONE MORE EC2 = NODE-2 ====NO KEY PAIR ====ADD BELOW USER DATA
+
+NODE-2
+
+#!/bin/bash
+sudo sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config
+sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+sudo service sshd restart
+sudo echo 'root:bhavya' | chpasswd
+hostname Node-2
+
+Both node install java
+amazon-linux-extras install java-openjdk11 
+
+In node 1:
+Cd /
+ls
+mkdir jenkins
+cd jenkins
+
+Go to Jenkins ui
+dashboard-manage jenkins-nodes and clouds- add new node- name -node-1 ----tick on permanent ajent- ok.
+Description --- This is slave 1----Remote root directory --- /jenkins------Launch method ------ via ssh ------host ---put pvt ip your node 1 ----credentials ---addd---jenkins---in next window ---username ---root -----password ---bhavya  ---add.
+Host Key Verification Strategy ---choose manually trusted key verification strategy---- tick on Require manual verification of initial connection ------ save
+Then click on node -1-----click on trust ssh agent on LHS ----YES---RELAUNCH
+
+yOU CAN SEE IN SYNC OPTION....I.E CONNECTED.
+
+lETS assign job to node-1
+Dashboard-create new job-free style-okin next window -click on restrict where this projecvt can run ...choose Node-1
+In build step --execute shell- type echo "testing for node-1"
+apply--save
+
+nOW CONNECT NODE-2  
+install git also
+
+INSTALL java
+cd /
+mkdir jenkins
+pwd
+/jenkis
+copy this poath
+Go to jenkins ui and repeat the same abouve procedure....in HOST PUT PVT ip of node-2 and save it
+
+Create new job-select-pipeline-ok
+description----pipeline (script from SCM) ----SCM _GIT) PATH (give jenkins file path from my repo) -branch specifir -bhavya ----
+repo url (copy and paste it from git hub)
+
+Goto jenkins file in github --edit in agent any
+agent {
+    label'Node-2'
+}
+stages{     ====from here onwards same then give comit changes.
+
+Apply save...build now    
+
+
+
