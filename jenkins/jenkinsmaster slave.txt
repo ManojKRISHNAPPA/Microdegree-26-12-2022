@@ -6,6 +6,11 @@ https://www.jenkins.io/doc/book/installing/linux/#red-hat-centos
 
 
 
+Jenkins master-slave configeration:
+Launch ec2 without key pair and using below first script
+
+
+
 node 1
 
 #!/bin/bash
@@ -14,6 +19,8 @@ sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/s
 sudo service sshd restart
 sudo echo 'root:bhavya' | chpasswd
 hostname Jenkin-Master
+
+Install jenkins using jenkin install url
 
 
 
