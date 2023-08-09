@@ -1,5 +1,5 @@
 pipeline{
-ajent any
+agent any
     stages{
         stages ('build'){
             step{
