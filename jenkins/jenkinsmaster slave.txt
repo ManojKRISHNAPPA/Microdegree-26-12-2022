@@ -25,4 +25,4 @@ sudo sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config
 sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 sudo service sshd restart
 sudo echo 'root:bhavya' | chpasswd
-hostname Node-1
+hostname jenkins-slave
