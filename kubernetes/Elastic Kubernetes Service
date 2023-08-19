@@ -21,4 +21,11 @@ click next---role name ( EKS-NODE-ROLE) --CREATE role.
 
 Now go back to cluster---choose cluster---compute----node group---name (devops-node)--role (choose EKSnoderole)------launch template (no need to enable)---kubernetes label and kubernetes taints  disable)----
 next----node group compute configeration (AMI TYPE --amazon-linux-2) ----capacity type (ondemand) ---instant type (by default t3 medium) ----disk (20)
-node group scaling (1--1--1) ---node group update configeration (choose number ---1) -----next---
+node group scaling (1--1--1) ---node group update configeration (choose number ---1) -----next---NODE GROUP NETWORK configeration (keep as it is) --ssh access to nodes (disable) ---
+next----create.
+ So this will create one ec2 in ec2 tab....i.e node group of our kubernetes cluster. (it will take few minutes...now our ec2 instance is in running state..we can not login to this machine ...ssh is disabled.).
+
+Noe go to EKS --CLUSTER ---you can see node group is attached.
+
+-----------------------This is how we can create cluster....To delete this first we should delete node group. so choose your nodegropup---delete...
+Now delete your cluster also.....
