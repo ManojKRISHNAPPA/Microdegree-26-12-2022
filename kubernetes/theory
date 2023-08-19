@@ -73,16 +73,16 @@ cd kube
 ls
 vim deployment.yaml
 
-apiversion: v1
-kind: pod
+apiVersion: v1
+kind: Pod
 metadata:
- name: my-app 
+  name: my-app
 spec:
   containers:
   - name: my-app
     image: nginx
     ports:
-     - containePort: 80                      (here p is capital)
+    - containerPort: 80                      (here p is capital)
 :wq!
 
 kubectl apply -f deployment.yaml
