@@ -82,7 +82,7 @@ spec:
   - name: my-app
     image: nginx
     ports:
-     - containerport: 80                      (here p is capital)
+     - containePort: 80                      (here p is capital)
 :wq!
 
 kubectl apply -f deployment.yaml
