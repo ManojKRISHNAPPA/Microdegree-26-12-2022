@@ -13,7 +13,7 @@ beacuse minikube designed to run on local systems
 sudo apt-get install conntrack
 wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo cp minikube-linux-amd64 /usr/local/bin/minikube
-chmod 755 /usr/local/bin/minikube
+sudo chmod 755 /usr/local/bin/minikube
 mini ptress tab button ==== it will show minikube folder.
 
 minikube version
