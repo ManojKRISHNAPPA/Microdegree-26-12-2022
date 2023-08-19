@@ -1,1 +1,24 @@
+MANAGED KUBERNETES SERVICES
+GO TO - AWS--search for EKS ---cluster---create cluster --name (devops)  ----version (use default i.e 1.25) -----
+cluster service role (for this we need to create IAM Role so go to Iam window) ---
+---create role  ----choose AWS service  --- use cases (search (EKS)-----choose EKS clusrtr ------next-----
+you can see here only one permision ----click on next----Role name (EKS-CLUSTER-ROLE) ---CREATE rOLE ---CREATE.
+Now go to EKS window----choose your iam role ---nect----choose default VPC -----SUBNETS ---USE DEFAULT -----
+security gropu ----use default ----cluster IP ADDRESS FAMILY (ipv4)---cluster end point access (public)  ( In real time we use private)--click next.
+In control plane logging (keep all disable ...In real time from which we need that one we keep enable...now we do not need any logs) ------
+click on next----next select adds on window will appear...click on next----in next window----unde cube proxy(choose default) ----under core DNS (choose defaut)--under Amazon vpc (choose default)---
+click next----in review and create----create
+After 10 min it will become active.......
 
+---------------------------------------------------------
+Now we need to add managed group / node group....Choose your cluster ----click on ---compute------node gropu------add node group----name (devops-node)
+
+role ( for this go to IAM WINDOW) --CREATE ROLE-----
+
+(above we created role for cluster now we need to create role for node group)------create role---choose AWS SERVICE-----USE CASE (choose EC2)-----NEXT----
+HERE WE NEED TO CHOOSE 3 ROLE i.e search amazonEKSwork and search ...choose it-------then search CNI -----choose it -----next search for EC2container ---in that choose --amazonEC2containerREGISTRYreadonly-----
+click next---role name ( EKS-NODE-ROLE) --CREATE role.
+
+Now go back to cluster---choose cluster---compute----node group---name (devops-node)--role (choose EKSnoderole)------launch template (no need to enable)---kubernetes label and kubernetes taints  disable)----
+next----node group compute configeration (AMI TYPE --amazon-linux-2) ----capacity type (ondemand) ---instant type (by default t3 medium) ----disk (20)
+node group scaling (1--1--1) ---node group update configeration (choose number ---1) -----next---
