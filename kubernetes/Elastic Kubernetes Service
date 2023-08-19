@@ -29,3 +29,27 @@ Noe go to EKS --CLUSTER ---you can see node group is attached.
 
 -----------------------This is how we can create cluster....To delete this first we should delete node group. so choose your nodegropup---delete...
 Now delete your cluster also.....
+----------------------------------------------------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx------------------------------------------
+
+Now create cluster and node group again-----Lets see how to ligin to our k8 cluster:
+Before login we should create authentication-----On Top rhs of aws console---click your name---choose security credentials -------create access key---select --i understand---create access key.
+click on show----- we can see access key and secret key....
+
+Now go to our ubuntu (already launched ) here we should install aws cli....Go to google and search aws cli install on ubuntu 20.04 and search....
+
+ COPY AND PASTE  ---       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+ COPY AND PASTE  ---   unzip awscliv2.zip
+ COPY AND PASTE  ---   sudo ./aws/install
+
+TYPE  aws
+type aws configure press enter
+it will ask  access key : copy and paste access key here
+secret key : copy paste here
+type your region
+next press enter
+now we can login to our aws cluster...to do type
+aws eks update-kubeconfig --region us-east-1 --name devops
+====>added new contect arn xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<======================================
+
+kubectl get nodes
+
