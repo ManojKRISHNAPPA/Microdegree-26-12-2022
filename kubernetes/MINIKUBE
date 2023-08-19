@@ -14,10 +14,10 @@ sudo apt-get install conntrack
 wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo cp minikube-linux-amd64 /usr/local/bin/minikube
 chmod 755 /usr/local/bin/minikube
-mini
+mini ptress tab button ==== it will show minikube folder.
 
 minikube version
-
+-------------------------------------------------------------------------------------------------------------
 
 Now:-install kubectl in ubuntu
 https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
@@ -60,4 +60,4 @@ from :-Install using native package management use commands
 
 10) minikube start --driver=docker
 
-11) kubectl get node
+11) kubectl get nodes
