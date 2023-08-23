@@ -27,12 +27,15 @@ kubectl get nodes
 namespaces: It is k8s object..which is used for a kind of mechanism for isolating the gropup of resources within a cluster.
 It is nothing but your projects....If you want to create staging , developeent environment for your oraganisation in a single 
 cluster then you can use a namespaces.
-(here one or more devops engineer will wok in single k8 cluster....developer will give the application A 's  code   to devops engineer.1 ...
+(here one or more devops engineer will wok in single k8 cluster....developer will give the application A 's  code  
+to devops engineer.1 ...
 He will dockerise that application and build a docker image of that application. 
 And then he will dploy this applicatopn on a kubernetes cluster as a pod. And then he runs as a container. 
 And in menifest file , he used metadata xyz and deployed that application.
-Devops engineer.2 will do the same thing and he deploy his application in the same k8 ncluster....He also used same metadata name in his 
-menifest file....So application is updated....That means the application delerted , which is deployed from devops engineer 1 and
+Devops engineer.2 will do the same thing and he deploy his application in the same k8 ncluster....He also used
+same metadata name in his 
+menifest file....So application is updated....That means the application delerted , which is deployed from devops
+engineer 1 and
 devops engiineer 2's application is updated.
 #rd devops engineer also did the same thing...
 That means they all deployed under same name spaces...and all names overwrite
@@ -45,9 +48,11 @@ kube- default (our  kubernetes cluster will set in default namespace...If you do
 space that is go and deployed on this default namespace...This is the name space where kubernetes provide for  you to start 
 deploying your k8s objects or resources here in default name spaces.
 
-kube node-lease --This is going to tell you that wether your node is up and running or not. if not it will send a signal to controller manager.
+kube node-lease --This is going to tell you that wether your node is up and running or not. if not it will send a signal
+to controller manager.
 kube-public --- This is publically accesible...Our client can access the kubernetes cluster throgh this namespace
-kube-system -----Here Kubernetes services which is related to this perticular k8s cluster can run here (i.e kube etcd kube shedular cm,cube proxy 
+kube-system -----Here Kubernetes services which is related to this perticular k8s cluster can run here (i.e kube etcd kube
+shedular cm,cube proxy 
 such perticular pods are running here..because those are system level service. 
 That is been reserverd for the system level services to be running
 
@@ -88,11 +93,13 @@ spec:
 kubectl apply -f deployment.yaml
 ====pod my-app created
 kubectl get pods
-========pod is running and this pod is nothing but containers.....containers are nothing but appluication....intern pod has one application...
+========pod is running and this pod is nothing but containers.....containers are nothing but appluication....
+intern pod has one application...
 So inorder to access this perticular application i need to have a perticular kubernetes services running for this perticular pod.
 then only we can expose this application to the outside world.
 
-So here in thus minikube we can not create services...because minikube has its own limitation....it is minimal in size.....
+So here in thus minikube we can not create services...because minikube has its own limitation....it is minimal in 
+size.....
 So we can not create kubernetes service object here....this we can achive in real time k8s cluster.
 
 deployment object: This is going to create a pod...also create a replication controller...or replication sets.
@@ -206,9 +213,11 @@ kubectl get pods
 
 To check what error =====> type
 kubectl describe pod podname
-Here it is telling that since it is private image we need to configure kubernetes secres object through a command...not in yaml file...
+Here it is telling that since it is private image we need to configure kubernetes secres object through a command...
+not in yaml file...
 
-kubectl create secret docker-registry my-secret --docker-server=https://index.docker.io/v1/ --docker-username=vinaytr --docker-password= --docker-email=vinay.t59@gmail.com
+kubectl create secret docker-registry my-secret --docker-server=https://index.docker.io/v1/ --docker-username=vinaytr
+--docker-password= --docker-email=vinay.t59@gmail.com
 
 
 secret-my-secret is created
