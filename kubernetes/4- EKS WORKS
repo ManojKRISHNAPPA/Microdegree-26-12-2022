@@ -25,3 +25,70 @@ mkdir kube
 cd kube
 ls
 vi deployment.yaml  (use previous deployment file)
+
+apiversion: apps/v1
+kind: Deployment
+metadata: 
+  name: vins
+  labels:
+     app: vins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:     ===== llabels L should be capital
+      app: vins
+  template:
+    metadata:
+      labels:
+        app: vins
+    spec: 
+      containrs:
+      - name: vins
+        image: nginx
+        ports: 
+        - containerPort: 80
+
+
+save it
+
+kubectl apply -f deployment.yaml ======> deployment created.........
+kubectl get pods   ===================> vinsxxxxxxx    running      xxxxxxxxxxxxxx
+
+Now lets create service using type cluster ip service :
+kubectl expose deployments vins --type ClusterIP --name vins-svc   =======> service vins.svc exposed
+kubectl get svc =========?you can see here service running   i.e =====>vins-svc 
+
+(so this perticular service is only inside the cluster...but we cant access our application from outside...
+as its name says this is cluster ip service...it is accesible only within the cluster)
+
+to expose inside cluster:
+kubectl exec -it podid /bin/bash 
+curl -X GET http://copypate serviceclusterip here  ===>you can see the application running
+curl -X GET http://vins-svc  =====================> in this way also you can see the same application running using service name also
+( interview question : using service name we can communication takes place between pods or services) 
+
+To delete:
+kubectl get svc
+kubectl delete svc service name
+
+NODEPORT SERVICE: To access application from outside
+
+ 1- use above deployment file and run it
+kubectl apply -f deployment.yaml
+kubectl expose deployments vins --name vins-svc --type NodePort --port 80 --target-port 80
+===>service vins-svc exposed
+kubectl get svc
+====> vins-svc NodePort  clusterip    externalip ports age <==========
+
+Go to your cluster ec2 ---edit SG ---ad all gtaffic 0.0.0.0. add save.
+Copy pub ip of that EC2:above port (for ex: 32100) and hit it....ngnx page will open.
+( This also we are not going to use in real time....it will not distribute load)
+kubectl delete svc vins-svc
+
+LOADBALANCER IP SERVICE:
+kubectl expose deployments vins --type Loadbalancer --name vins-svc --port 80 --target-port 80
+(here first 80 is the port number from which we are accessing our applin outside, next 80 tye container port)
+service exposed
+kubectl get svc
+
+here you can see load balancer dns name ....copy this and hit ...your application will open.
