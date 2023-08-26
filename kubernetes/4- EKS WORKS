@@ -91,4 +91,5 @@ kubectl expose deployments vins --type Loadbalancer --name vins-svc --port 80 --
 service exposed
 kubectl get svc
 
-here you can see load balancer dns name ....copy this and hit ...your application will open.
+here you can see load balancer dns name ....copy this and hit ...your application will open.(if you add replica here your LB will disytribute the  traffic equally)
+
