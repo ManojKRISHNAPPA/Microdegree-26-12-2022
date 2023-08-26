@@ -1,1 +1,3 @@
-
+If we access one service from another service then you should use access token.
+Here we are  accessing kubernetes cluster through EC2 service using access token.
+aws configure ( this is explained in previous file)
