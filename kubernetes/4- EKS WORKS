@@ -12,7 +12,8 @@ This also kubernetes object....application we are going to expose using kubernet
 3. load balance IP
 
 
-If i want to expose one application and i want to access within my cluster ...it should not acccess from outside world . Then it i called cluster ip
+If i want to expose one application and i want to access within my cluster ...it should not acccess from outside world . 
+Then it i called cluster ip
 so from cluster ip service we are exposing some aplication then that will be accessible only within the cluster not from outside.
 
 Node IP : Uing the external Ip of this perticular node we can acces our application from outside world.
@@ -64,7 +65,8 @@ as its name says this is cluster ip service...it is accesible only within the cl
 to expose inside cluster:
 kubectl exec -it podid /bin/bash 
 curl -X GET http://copypate serviceclusterip here  ===>you can see the application running
-curl -X GET http://vins-svc  =====================> in this way also you can see the same application running using service name also
+curl -X GET http://vins-svc  =====================> in this way also you can see the same application running using service
+name also
 ( interview question : using service name we can communication takes place between pods or services) 
 
 To delete:
@@ -91,5 +93,6 @@ kubectl expose deployments vins --type Loadbalancer --name vins-svc --port 80 --
 service exposed
 kubectl get svc
 
-here you can see load balancer dns name ....copy this and hit ...your application will open.(if you add replica here your LB will disytribute the  traffic equally)
+here you can see load balancer dns name ....copy this and hit ...your application will open.(if you add replica here your
+LB will disytribute the  traffic equally)
 
