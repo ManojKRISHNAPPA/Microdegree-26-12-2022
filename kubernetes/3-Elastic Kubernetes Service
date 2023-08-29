@@ -4,38 +4,51 @@ cluster service role (for this we need to create IAM Role so go to Iam window) -
 ---create role  ----choose AWS service  --- use cases (search (EKS)-----choose EKS clusrtr ------next-----
 you can see here only one permision ----click on next----Role name (EKS-CLUSTER-ROLE) ---CREATE rOLE ---CREATE.
 Now go to EKS window----choose your iam role ---nect----choose default VPC -----SUBNETS ---USE DEFAULT -----
-security gropu ----use default ----cluster IP ADDRESS FAMILY (ipv4)---cluster end point access (public)  ( In real time we use private)--click next.
-In control plane logging (keep all disable ...In real time from which we need that one we keep enable...now we do not need any logs) ------
-click on next----next select adds on window will appear...click on next----in next window----unde cube proxy(choose default) ----under core DNS (choose defaut)--under Amazon vpc (choose default)---
+security gropu ----use default ----cluster IP ADDRESS FAMILY (ipv4)---cluster end point access (public)  
+( In real time we use private)--click next.
+In control plane logging (keep all disable ...In real time from which we need that one we keep enable...
+now we do not need any logs) ------
+click on next----next select adds on window will appear...click on next----in next window----unde 
+cube proxy(choose default) ----under core DNS (choose defaut)--under Amazon vpc (choose default)---
 click next----in review and create----create
 After 10 min it will become active.......
 
 ---------------------------------------------------------
-Now we need to add managed group / node group....Choose your cluster ----click on ---compute------node gropu------add node group----name (devops-node)
+Now we need to add managed group / node group....Choose your cluster ----click on ---compute------
+node gropu------add node group----name (devops-node)
 
 role ( for this go to IAM WINDOW) --CREATE ROLE-----
 
-(above we created role for cluster now we need to create role for node group)------create role---choose AWS SERVICE-----USE CASE (choose EC2)-----NEXT----
-HERE WE NEED TO CHOOSE 3 ROLE i.e search amazonEKSwork and search ...choose it-------then search CNI -----choose it -----next search for EC2container ---in that choose --amazonEC2containerREGISTRYreadonly-----
+(above we created role for cluster now we need to create role for node group)------create role---choose AWS SERVICE
+-----USE CASE (choose EC2)-----NEXT----
+HERE WE NEED TO CHOOSE 3 ROLE i.e search amazonEKSwork and search ...choose it-------then search CNI -----choose it
+-----next search for EC2container ---in that choose --amazonEC2containerREGISTRYreadonly-----
 click next---role name ( EKS-NODE-ROLE) --CREATE role.
 
-Now go back to cluster---choose cluster---compute----node group---name (devops-node)--role (choose EKSnoderole)------launch template (no need to enable)---kubernetes label and kubernetes taints  disable)----
-next----node group compute configeration (AMI TYPE --amazon-linux-2) ----capacity type (ondemand) ---instant type (by default t3 medium) ----disk (20)
-node group scaling (1--1--1) ---node group update configeration (choose number ---1) -----next---NODE GROUP NETWORK configeration (keep as it is) --ssh access to nodes (disable) ---
+Now go back to cluster---choose cluster---compute----node group---name (devops-node)--role (choose EKSnoderole)------
+launch template (no need to enable)---kubernetes label and kubernetes taints  disable)----
+next----node group compute configeration (AMI TYPE --amazon-linux-2) ----capacity type (ondemand) ---instant type
+(by default t3 medium) ----disk (20)
+node group scaling (1--1--1) ---node group update configeration (choose number ---1) -----next---NODE GROUP NETWORK configeration
+(keep as it is) --ssh access to nodes (disable) ---
 next----create.
- So this will create one ec2 in ec2 tab....i.e node group of our kubernetes cluster. (it will take few minutes...now our ec2 instance is in running state..we can not login to this machine ...ssh is disabled.).
+ So this will create one ec2 in ec2 tab....i.e node group of our kubernetes cluster. (it will take few minutes...
+now our ec2 instance is in running state..we can not login to this machine ...ssh is disabled.).
 
 Noe go to EKS --CLUSTER ---you can see node group is attached.
 
------------------------This is how we can create cluster....To delete this first we should delete node group. so choose your nodegropup---delete...
+-----------------------This is how we can create cluster....To delete this first we should delete node group. 
+so choose your nodegropup---delete...
 Now delete your cluster also.....
 ----------------------------------------------------xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx------------------------------------------
 
 Now create cluster and node group again-----Lets see how to ligin to our k8 cluster:
-Before login we should create authentication-----On Top rhs of aws console---click your name---choose security credentials -------create access key---select --i understand---create access key.
+Before login we should create authentication-----On Top rhs of aws console---click your name---choose security 
+credentials -------create access key---select --i understand---create access key.
 click on show----- we can see access key and secret key....
 
-Now go to our ubuntu (already launched ) here we should install aws cli....Go to google and search aws cli install on ubuntu 20.04 and search....
+Now go to our ubuntu (already launched ) here we should install aws cli....Go to google and search aws cli install 
+on ubuntu 20.04 and search....
 
  COPY AND PASTE  ---       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
  COPY AND PASTE  ---   unzip awscliv2.zip
