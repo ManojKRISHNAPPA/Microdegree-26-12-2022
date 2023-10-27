@@ -1,7 +1,1 @@
-
-echo"hi" 
-echo"print"
-echo"manoj is hot"
-echo " hello microdegree"
-echo "solveing git conflict"
-echo "hello world
+#!/bin/bash
