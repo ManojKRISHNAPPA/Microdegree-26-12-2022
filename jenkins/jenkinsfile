@@ -13,7 +13,7 @@ agent any
                 steps{
 		    sh '''
                     echo "MEMORY DETAILS"
-                    du -sch *
+                    df -h *
 		    '''
                 }
             }
@@ -37,7 +37,7 @@ agent any
                 steps{
                     sh '''
                     echo "Process command"
-                    ps -ef | head -3 
+                    ps -ef | tail -3 
                     '''
                 }
             }
