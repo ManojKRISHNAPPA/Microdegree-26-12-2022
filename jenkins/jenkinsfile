@@ -2,7 +2,7 @@ pipeline{
 agent {
     label 'node-1'
 }
-        stages{
+     stages{
             stage('Build-System details'){
                 steps{
                     sh '''
